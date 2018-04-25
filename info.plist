@@ -230,13 +230,13 @@
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
-				<string></string>
+				<string>search</string>
 				<key>subtext</key>
 				<string></string>
 				<key>title</key>
 				<string></string>
 				<key>type</key>
-				<integer>0</integer>
+				<integer>8</integer>
 				<key>withspace</key>
 				<true/>
 			</dict>
@@ -293,19 +293,17 @@
 				<key>escaping</key>
 				<integer>68</integer>
 				<key>script</key>
-				<string>function run(argv) {
-  var app = Application.currentApplication()
+				<string>function run (_argv) {
+  const app = Application.currentApplication()
   app.includeStandardAdditions = true
  
-  var result = app.displayDialog("Enter your Calendly API Key", {
-    defaultAnswer: "",
-    withIcon: "note",
-    buttons: ["Cancel", "Save"],
-    defaultButton: "Save",
-    hiddenAnswer: false
+  const {buttonReturned, textReturned} = app.displayDialog("Enter Calendly API Key", {
+      defaultAnswer: "",
+      buttons: ["Cancel", "Save"],
+      defaultButton: "Save",
   })
 
-  return result.buttonReturned == "Save" ? result.textReturned : ""
+  return buttonReturned == "Save" ? textReturned : ""
 }</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
@@ -366,9 +364,9 @@ fi</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
-				<string></string>
+				<string>delete-api-key</string>
 				<key>type</key>
-				<integer>0</integer>
+				<integer>8</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>

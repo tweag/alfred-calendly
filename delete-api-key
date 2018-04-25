@@ -1,0 +1,16 @@
+#!/bin/bash
+
+cd || exit
+
+mkdir -p "$(dirname "$config_api_key_file")"
+
+# remove extra blank lines
+key=$(echo "$1" | grep '\S')
+
+echo "$key" > "$config_api_key_file"
+
+if [[ "$key" == "$(cat "$config_api_key_file")" ]]; then
+  echo "✅ Saved"
+else
+  echo "🚫 Error while saving"
+fi
