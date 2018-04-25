@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# Generate PNG icons based on the Calendly colors
+
+# requires `brew install librsvg`
+
+# From Calendly
+colors=(d2a2ff c5c1ff d3e5f0 74daed c0ffdf 4bff97 c7ff10 dfefa9 fffa9f fff200 ffddb9 ffb3f2)
+
+d=256
+r=$((d / 2))
+
+svg() {
+  echo -n '<svg xmlns="http://www.w3.org/2000/svg" height="'"$d"'" width="'"$d"'" ><circle fill="#'"$1"'" cx="'"$r"'" cy="'"$r"'" r="'"$r"'"></circle></svg>'
+}
+
+mkdir -p icons
+
+for color in "${colors[@]}"; do
+  rsvg-convert -h 256 <(svg "$color") > "icons/event-type-color-$color.png"
+done

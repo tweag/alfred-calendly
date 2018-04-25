@@ -1,0 +1,110 @@
+#!/usr/bin/ruby
+
+require 'uri'
+require 'open-uri'
+require 'json'
+
+API_KEY_FILE = File.join(ENV.fetch('HOME'), ENV.fetch('config_api_key_file'))
+
+def emit(items)
+  puts JSON.dump(items: items)
+  exit
+end
+
+def log(arg)
+  $stderr.puts arg.inspect
+end
+
+def offer_auth
+  emit [
+    {
+      arg: 'add-api-key',
+      title: 'Add your API key',
+    },
+    {
+      arg: 'browse-for-api-key',
+      title: 'Get your API key from calendly.com',
+    },
+  ]
+end
+
+offer_auth unless File.exist?(API_KEY_FILE)
+api_key = File.read(API_KEY_FILE)
+api_uri = URI.parse('https://calendly.com/api/v1/users/me/event_types')
+
+response = api_uri.open('X-TOKEN' => api_key) do |f|
+  status, message = f.status
+  log status: status, message: message
+  offer_auth unless status == "200"
+  f.read
+end
+
+raw_event_types = JSON.parse(response).fetch('data')
+
+=begin
+Example:
+
+{
+  "type": "event_types",
+  "id": "CFGDR5RWJRB2FTWZ",
+  "attributes": {
+    "description": null,
+    "color": "#74daed",
+    "duration": 30,
+    "created_at": "2018-04-16T22:17:16Z",
+    "updated_at": "2018-04-20T22:09:16Z",
+    "slug": "video-chat-atx",
+    "active": true,
+    "location": null,
+    "name": "Video chat with Austin office",
+    "url": "https://calendly.com/software-engineering/video-chat-atx"
+  }
+},
+=end
+
+module MatchString
+  module_function
+  def ngrams(str, n)
+    str.downcase.each_char.each_cons(n).to_a.map(&:join).join(' ')
+  end
+
+  def allgrams(str)
+    (1..str.length).map { |n| ngrams(str, n) }.join(' ')
+  end
+
+  def call(attrs)
+    allgrams(
+      [
+        attrs.fetch('name'),
+        attrs.fetch('description'),
+        attrs.fetch('duration'),
+        attrs.fetch('slug'),
+      ].map(&:to_s).join(' ')
+    )
+  end
+end
+
+items = raw_event_types.map do |raw_event_type|
+  attr = ->(key) { raw_event_type.fetch('attributes').fetch(key) }
+
+  next unless attr['active']
+
+  icon = "./icons/event-type-color-#{attr['color'].sub('#', '')}.png"
+
+  subtitle = [
+    "#{attr['duration']}m",
+    attr['slug'],
+    attr['description'],
+  ].compact.join(', ')
+
+  {
+    uid: raw_event_type.fetch('id'),
+    title: attr['name'],
+    arg: attr['url'],
+    icon: { path: icon },
+    subtitle: subtitle,
+    match: MatchString.call(raw_event_type.fetch('attributes')),
+  }
+end.compact
+
+emit items
