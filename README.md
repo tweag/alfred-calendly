@@ -10,7 +10,7 @@ Press Enter to copy to clipboard and/or paste into the current application.
 
 Example:
 
-<img width="587" alt="screen shot 2018-04-28 at 1 22 54 pm" src="https://user-images.githubusercontent.com/9061/39399193-89c269ec-4ae7-11e8-80b8-04365c6fa360.png">
+<img width="608" alt="screen shot 2018-04-28 at 1 28 27 pm" src="https://user-images.githubusercontent.com/9061/39399226-1af362ae-4ae8-11e8-9b1a-d8582dcb9e14.png">
 
 ## Installation
 
