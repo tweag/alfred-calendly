@@ -1,5 +1,7 @@
 #!/usr/bin/ruby
 
+# Download Calendly event types from API and let the user choose 1
+
 require 'uri'
 require 'open-uri'
 require 'json'
@@ -7,6 +9,7 @@ require 'json'
 API_KEY_FILE = File.join(ENV.fetch('HOME'), ENV.fetch('config_api_key_file'))
 
 def emit(items)
+  $stderr.puts items.inspect
   puts JSON.dump(items: items)
   exit
 end
@@ -28,6 +31,10 @@ def offer_auth
   ]
 end
 
+def icon_path(color_rgb)
+  "./icons/event-type-color-#{color_rgb.sub('#', '')}.png"
+end
+
 offer_auth unless File.exist?(API_KEY_FILE)
 api_key = File.read(API_KEY_FILE)
 api_uri = URI.parse('https://calendly.com/api/v1/users/me/event_types')
@@ -41,27 +48,7 @@ end
 
 raw_event_types = JSON.parse(response).fetch('data')
 
-=begin
-Example:
-
-{
-  "type": "event_types",
-  "id": "CFGDR5RWJRB2FTWZ",
-  "attributes": {
-    "description": null,
-    "color": "#74daed",
-    "duration": 30,
-    "created_at": "2018-04-16T22:17:16Z",
-    "updated_at": "2018-04-20T22:09:16Z",
-    "slug": "video-chat-atx",
-    "active": true,
-    "location": null,
-    "name": "Video chat with Austin office",
-    "url": "https://calendly.com/software-engineering/video-chat-atx"
-  }
-},
-=end
-
+# Enable fuzzy search by listing all n-grams of searchable fields
 module MatchString
   module_function
   def ngrams(str, n)
@@ -89,8 +76,6 @@ items = raw_event_types.map do |raw_event_type|
 
   next unless attr['active']
 
-  icon = "./icons/event-type-color-#{attr['color'].sub('#', '')}.png"
-
   subtitle = [
     "#{attr['duration']}m",
     attr['slug'],
@@ -101,7 +86,7 @@ items = raw_event_types.map do |raw_event_type|
     uid: raw_event_type.fetch('id'),
     title: attr['name'],
     arg: attr['url'],
-    icon: { path: icon },
+    icon: { path: icon_path(attr['color']) },
     subtitle: subtitle,
     match: MatchString.call(raw_event_type.fetch('attributes')),
   }
