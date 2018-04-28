@@ -4,8 +4,8 @@ An unofficial workflow for Calendly.
 
 ## Usage
 
-By default, the used keyword for using it is "cal".
-Use that to search for your different even types.
+By default, `cal` is the keyword to activate the workflow.
+Use that to search for your different event types.
 Press Enter to copy to clipboard and/or paste into the current application.
 
 Example:
@@ -14,7 +14,7 @@ Example:
 
 ## Installation
 
-Download the latest GitHub release and double click it to install.
+Download the [latest GitHub release](https://github.com/promptworks/alfred-calendly/releases) and double click it to install.
 
 ## Updates
 
