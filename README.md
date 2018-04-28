@@ -19,6 +19,7 @@ Download the latest GitHub release and double click it to install.
 ## Updates
 
 Currently, updates are provided via Github releases. If you want to see when there's an update, subscribe to the releases.
+Here's the atom feed: https://github.com/promptworks/alfred-calendly/releases.atom
 
 ## Implementation Notes
 
