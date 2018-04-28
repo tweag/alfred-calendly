@@ -543,7 +543,7 @@ rm $config_api_key_file</string>
 		<key>389B9269-9694-4602-8A5C-E280E5BB9CE6</key>
 		<dict>
 			<key>xpos</key>
-			<integer>60</integer>
+			<integer>50</integer>
 			<key>ypos</key>
 			<integer>500</integer>
 		</dict>
@@ -575,7 +575,7 @@ rm $config_api_key_file</string>
 			<key>note</key>
 			<string>Delete file</string>
 			<key>xpos</key>
-			<integer>230</integer>
+			<integer>220</integer>
 			<key>ypos</key>
 			<integer>500</integer>
 		</dict>
