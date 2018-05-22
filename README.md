@@ -33,6 +33,7 @@ This can be changed via workflow's environment variable.
 The icons are generated from the colors that Calendly lets you choose for your event types.
 
 To update the icons, update the list of colors in `generate_even_color_icons` and rerun the script.
+Please optimize the images after generating them via ImageOptim or something similar.
 
 ## Contributing
 
