@@ -62,6 +62,19 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
+				<string>B0A70C71-8BD5-43CC-8F0A-D829B2F66072</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>691385C0-B5F6-41EF-9A3A-AAF20790BA60</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
 				<string>AB459F96-8E9D-4D95-B04F-3AA04148CA54</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -76,6 +89,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>ECDADF31-4C87-483E-B565-15712421622F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>B0A70C71-8BD5-43CC-8F0A-D829B2F66072</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>691385C0-B5F6-41EF-9A3A-AAF20790BA60</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -153,6 +179,8 @@
 				<false/>
 			</dict>
 		</array>
+		<key>ECDADF31-4C87-483E-B565-15712421622F</key>
+		<array/>
 	</dict>
 	<key>createdby</key>
 	<string>Mike Nicholaides</string>
@@ -496,6 +524,48 @@ rm $config_api_key_file</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>osascript -l JavaScript confirm-deletion.js</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string>confirm-deletion</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>B0A70C71-8BD5-43CC-8F0A-D829B2F66072</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>inputstring</key>
+				<string>{query}</string>
+				<key>matchcasesensitive</key>
+				<false/>
+				<key>matchmode</key>
+				<integer>2</integer>
+				<key>matchstring</key>
+				<string>\s*command:delete\s*</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.filter</string>
+			<key>uid</key>
+			<string>691385C0-B5F6-41EF-9A3A-AAF20790BA60</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
@@ -554,6 +624,13 @@ rm $config_api_key_file</string>
 			<key>ypos</key>
 			<integer>30</integer>
 		</dict>
+		<key>691385C0-B5F6-41EF-9A3A-AAF20790BA60</key>
+		<dict>
+			<key>xpos</key>
+			<integer>380</integer>
+			<key>ypos</key>
+			<integer>530</integer>
+		</dict>
 		<key>6AC89A6A-AC3E-46F8-A627-A6A417D43A84</key>
 		<dict>
 			<key>note</key>
@@ -574,6 +651,13 @@ rm $config_api_key_file</string>
 		<dict>
 			<key>note</key>
 			<string>Delete file</string>
+			<key>xpos</key>
+			<integer>470</integer>
+			<key>ypos</key>
+			<integer>500</integer>
+		</dict>
+		<key>B0A70C71-8BD5-43CC-8F0A-D829B2F66072</key>
+		<dict>
 			<key>xpos</key>
 			<integer>220</integer>
 			<key>ypos</key>
@@ -607,7 +691,7 @@ rm $config_api_key_file</string>
 			<key>note</key>
 			<string>Show failure message</string>
 			<key>xpos</key>
-			<integer>380</integer>
+			<integer>630</integer>
 			<key>ypos</key>
 			<integer>500</integer>
 		</dict>
