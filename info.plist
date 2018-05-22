@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string></string>
+	<string>com.promptworks.calendly</string>
 	<key>connections</key>
 	<dict>
 		<key>050B0B90-21F7-4227-A8CE-6D4027A7232C</key>
@@ -185,7 +185,8 @@
 	<key>createdby</key>
 	<string>Mike Nicholaides</string>
 	<key>description</key>
-	<string></string>
+	<string>An unofficial workflow for Calendly.
+An unofficial workflow for Calendly.</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
@@ -706,6 +707,6 @@ rm $config_api_key_file</string>
 	<key>version</key>
 	<string></string>
 	<key>webaddress</key>
-	<string></string>
+	<string>https://github.com/promptworks/alfred-calendly</string>
 </dict>
 </plist>
