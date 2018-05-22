@@ -364,7 +364,7 @@ fi</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
-				<string>delete-api-key</string>
+				<string>save-api-key</string>
 				<key>type</key>
 				<integer>8</integer>
 			</dict>
