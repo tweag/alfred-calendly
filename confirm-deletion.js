@@ -11,8 +11,5 @@ function run(argv) {
     cancelButton: noButton
   })
 
-  if (answer.buttonReturned == yesButton) {
-    console.log('command:delete')
-    return 'command:delete'
-  }
+  return answer.buttonReturned == yesButton ?  'command:delete' : 'command:cancel'
 }
