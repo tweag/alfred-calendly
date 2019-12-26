@@ -18,11 +18,12 @@ colors=(
   f49a31
 )
 
-d=256
-r=$((d / 2))
-
 svg() {
-  echo -n '<svg xmlns="http://www.w3.org/2000/svg" height="'"$d"'" width="'"$d"'" ><circle fill="#'"$1"'" cx="'"$r"'" cy="'"$r"'" r="'"$r"'"></circle></svg>'
+  echo "
+    <svg viewBox='0 0 2 2'>
+      <circle fill='#$1' cx='1' cy='1' r='1'/>
+    </svg>
+  "
 }
 
 mkdir -p icons
