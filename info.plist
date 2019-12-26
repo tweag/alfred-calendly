@@ -576,6 +576,8 @@ rm $config_api_key_file</string>
 	<dict>
 		<key>050B0B90-21F7-4227-A8CE-6D4027A7232C</key>
 		<dict>
+			<key>note</key>
+			<string>URLs</string>
 			<key>xpos</key>
 			<integer>330</integer>
 			<key>ypos</key>
@@ -608,6 +610,8 @@ rm $config_api_key_file</string>
 		</dict>
 		<key>3478D062-61C6-4F55-970B-2DB157CE7B42</key>
 		<dict>
+			<key>note</key>
+			<string>Open browser to get API key</string>
 			<key>xpos</key>
 			<integer>330</integer>
 			<key>ypos</key>
@@ -629,6 +633,8 @@ rm $config_api_key_file</string>
 		</dict>
 		<key>691385C0-B5F6-41EF-9A3A-AAF20790BA60</key>
 		<dict>
+			<key>note</key>
+			<string>If the user confirmed</string>
 			<key>xpos</key>
 			<integer>380</integer>
 			<key>ypos</key>
@@ -661,6 +667,8 @@ rm $config_api_key_file</string>
 		</dict>
 		<key>B0A70C71-8BD5-43CC-8F0A-D829B2F66072</key>
 		<dict>
+			<key>note</key>
+			<string>Show confirmation dialog for deleting API key</string>
 			<key>xpos</key>
 			<integer>220</integer>
 			<key>ypos</key>
@@ -684,6 +692,8 @@ rm $config_api_key_file</string>
 		</dict>
 		<key>C3704942-DBF0-4AC6-B246-961485DE068B</key>
 		<dict>
+			<key>note</key>
+			<string>Add an API Key</string>
 			<key>xpos</key>
 			<integer>330</integer>
 			<key>ypos</key>
@@ -692,7 +702,7 @@ rm $config_api_key_file</string>
 		<key>ECDADF31-4C87-483E-B565-15712421622F</key>
 		<dict>
 			<key>note</key>
-			<string>Show failure message</string>
+			<string>Show "deleted" message</string>
 			<key>xpos</key>
 			<integer>630</integer>
 			<key>ypos</key>
