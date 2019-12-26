@@ -63,15 +63,8 @@ module MatchString
     (1..str.length).map { |n| ngrams(str, n) }.join(' ')
   end
 
-  def call(attrs)
-    allgrams(
-      [
-        attrs.fetch('name'),
-        attrs.fetch('description'),
-        attrs.fetch('duration'),
-        attrs.fetch('slug'),
-      ].map(&:to_s).join(' ')
-    )
+  def call(*attrs)
+    allgrams(attrs.map(&:to_s).join(' '))
   end
 end
 
@@ -92,7 +85,12 @@ items = raw_event_types.map do |raw_event_type|
     arg: attr['url'],
     icon: { path: icon_path(attr['color']) },
     subtitle: subtitle,
-    match: MatchString.call(raw_event_type.fetch('attributes')),
+    match: MatchString.call(
+      attr['name'],
+      attr['description'],
+      attr['duration'],
+      attr['slug'],
+    ),
   }
 end.compact
 
