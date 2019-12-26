@@ -32,7 +32,11 @@ def offer_auth
 end
 
 def icon_path(color_rgb)
-  "./icons/event-type-color-#{color_rgb.sub('#', '')}.png"
+  "./icons/event-type-color-#{color_rgb.sub('#', '')}.png".tap do |path|
+    if !File.exist?(path)
+      log "Icon does not exist for color: #{color_rgb}"
+    end
+  end
 end
 
 offer_auth unless File.exist?(API_KEY_FILE)
